@@ -40,6 +40,30 @@
       "created_at": "2026-09-24T21:16:54.365Z",
       "sender": "ios",
       "is_cancelled": false
+    },
+    {
+      "id": "940c32b7-2761-4b73-8c59-2de0c9571a0f",
+      "role": "agent",
+      "content": "To help you best, here are the most common things this refers to:\n\n### 1. Finding your prompt / code in Google AI Studio\nIf you created a prompt or project named **\"Truck With Ease\"** (or **\"Track With Ease\"**) in Google AI Studio:\n1. Open [Google AI Studio](https://aistudio.google.com).\n2. In the left navigation menu, click **My Library** (or **Recent Prompts**) to find your saved prompt.\n3. Click the **\"Get code\"** button (`< >` icon in the upper-right corner) to export the Python, JavaScript/TypeScript, or cURL code.\n4. Click **\"Get API key\"** in the sidebar to get your key. You can paste the code or prompt here and I'll add it to the project with full tests.\n\n---\n\n### 2. API endpoint / region \"location\"\n* **Google AI Studio (Gemini API)**: Uses a global endpoint (`https://generativelanguage.googleapis.com/v1beta/`), so you do not need to specify a cloud region/location.\n* **Vertex AI (Google Cloud)**: If you are using Vertex AI through Google Cloud instead of AI Studio, the default region location is typically `us-central1`.\n\n---\n\n### 3. Building a location/tracking feature for a \"Truck With Ease\" app\nIf you are building a trucking & logistics app and want to use Google AI Studio / Gemini to:\n* Parse addresses and extract pickup/drop-off locations from messages or invoices.\n* Estimate delivery routes, stops, and truck logistics.\n* Track driver status and generate location updates.\n\n---\n\n**Which of these are you trying to do?** If you have code or a prompt from AI Studio, feel free to paste it here and I will set up the application and write tests for it!",
+      "status": "completed",
+      "model": "gemini-3.8-flash-high",
+      "client_type": "gemini-bridge",
+      "parent_message_id": "0fe6a8bb-ce0b-48c6-8025-848ad3b00915",
+      "created_at": "2026-09-24T21:17:19.377Z",
+      "sender": "macOS",
+      "is_cancelled": false
+    },
+    {
+      "id": "0fb9da18-92b1-4e24-ae92-37789d13e7da",
+      "role": "user",
+      "content": "Commit all staged changes with exactly this commit message, unchanged:\n\nDelete a chat twice without losing it",
+      "status": "pending",
+      "model": "gemini-3.8-flash-high",
+      "client_type": "gemini-bridge",
+      "parent_message_id": null,
+      "created_at": "2026-09-24T21:29:09.283Z",
+      "sender": "ios",
+      "is_cancelled": false
     }
   ]
 }
