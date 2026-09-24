@@ -3,6 +3,19 @@
   "name": "Add tests for the main features",
   "createdAt": "2026-09-24T21:12:12.539Z",
   "filename": "96dc7425-dddf-4a77-9e3f-edf1542cd7af.json",
-  "geminiStarted": false,
-  "messages": []
+  "geminiStarted": true,
+  "messages": [
+    {
+      "id": "9000dff7-7718-4163-bf5d-4871ba1ec13d",
+      "role": "user",
+      "content": "Add tests for the main features",
+      "status": "pending",
+      "model": "gemini-3.8-flash-high",
+      "client_type": "gemini-bridge",
+      "parent_message_id": null,
+      "created_at": "2026-09-24T21:14:45.427Z",
+      "sender": "ios",
+      "is_cancelled": false
+    }
+  ]
 }
