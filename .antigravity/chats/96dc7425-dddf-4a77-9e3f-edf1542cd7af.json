@@ -64,6 +64,54 @@
       "created_at": "2026-09-24T21:29:09.283Z",
       "sender": "ios",
       "is_cancelled": false
+    },
+    {
+      "id": "f59a2de2-d32f-4857-9b19-7851044a0867",
+      "role": "user",
+      "content": "Generate clear API documentation for the code or spec I provide. For each endpoint (or function):\n\n1. Purpose in one sentence\n2. Parameters/request body and types\n3. Response shape and status codes\n4. Example request and response (curl or JSON)\n5. Errors and edge cases\n\nOutput in a consistent, copy-paste friendly format (e.g. Markdown or OpenAPI snippet).",
+      "status": "pending",
+      "model": "gemini-3.8-flash-high",
+      "client_type": "gemini-bridge",
+      "parent_message_id": null,
+      "created_at": "2026-10-07T23:57:43.640Z",
+      "sender": "ios",
+      "is_cancelled": false
+    },
+    {
+      "id": "b1b9fb1b-a2c5-4bfc-b44c-211058ae4f27",
+      "role": "agent",
+      "content": "I'm ready. Please paste or provide the code, endpoint routes, or API spec you would like documented.\n\nEach endpoint or function will be formatted according to your 5-point structure:\n\n---\n\n### `[METHOD]` `/path/to/endpoint`\n\n#### 1. Purpose\nA concise, single-sentence summary of what this endpoint does.\n\n#### 2. Parameters & Request Body\n* **Headers**: `Authorization: Bearer <token>`, `Content-Type: application/json`\n* **Query / Path Parameters**:\n  * `param_name` (`type`, required/optional) – Description.\n* **Request Body** (`application/json`):\n  * `field_name` (`string`, required) – Description.\n  * `count` (`integer`, optional) – Description.\n\n#### 3. Response Shape & Status Codes\n* **Status**: `200 OK`\n* **Content-Type**: `application/json`\n* **Schema**:\n```json\n{\n  \"id\": \"string\",\n  \"status\": \"string\",\n  \"created_at\": \"string (ISO 8601)\"\n}\n```\n\n#### 4. Example Request & Response\n\n##### Request\n```bash\ncurl -X POST \"https://api.example.com/v1/resource\" \\\n  -H \"Authorization: Bearer YOUR_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"field_name\": \"sample_value\",\n    \"count\": 5\n  }'\n```\n\n##### Response (`200 OK`)\n```json\n{\n  \"id\": \"res_12345\",\n  \"status\": \"created\",\n  \"created_at\": \"2026-10-07T23:57:45Z\"\n}\n```\n\n#### 5. Errors & Edge Cases\n| Status Code | Error Code | Description / Condition |\n| :--- | :--- | :--- |\n| `400 Bad Request` | `INVALID_PAYLOAD` | Missing required field `field_name`. |\n| `401 Unauthorized` | `AUTH_REQUIRED` | Missing or invalid Bearer token. |\n| `404 Not Found` | `NOT_FOUND` | Target resource does not exist. |\n\n---\n\nPlease share your code or spec (or point to a file), and I'll generate the documentation right away.",
+      "status": "completed",
+      "model": "gemini-3.8-flash-high",
+      "client_type": "gemini-bridge",
+      "parent_message_id": "f59a2de2-d32f-4857-9b19-7851044a0867",
+      "created_at": "2026-10-07T23:58:09.481Z",
+      "sender": "macOS",
+      "is_cancelled": false
+    },
+    {
+      "id": "08b6ef61-9014-48c3-bb21-e505c83a3c23",
+      "role": "user",
+      "content": "# AGENT DIRECTIVE: TRUCKWITHEASE ENTERPRISE FLEET OS\nTarget Environment: Remote Linux Sandbox (Node.js 22 / TypeScript 5.8 / Vite SPA + Express Engine)\nAuthor: Jeremiah Morris (Founder & Chief Architect)\nCapabilities: code_execution, file_management, telematics_websocket, fmcsa_compliance_engine, salesforce_transport_cloud\n\n## ARCHITECTURAL CONTEXT\nYou are running the TRUCKWITHEASE Tactical Fleet Operating System. This is a mission-critical, zero-manual-reporting logistics cockpit designed to exceed Samsara, Motive (KeepTruckin), and Geotab. \n\nKey Operational Pillars:\n1. FMCSA 49 CFR Part 395/396 Certified Hours-of-Service (HOS) & Digital DVIR with cryptographic SHA-256 seal.\n2. Real-Time J1939 CAN-Bus Telemetry Streamer & Predictive Maintenance (SPN/FMI fault code forecasting with historical ledger MTBF matching).\n3. Low Bridge Detection Mesh with dynamic vehicle clearance profiles (13'6\" standard, 14'0\" oversize, etc.) and visual radar warnings.\n4. Bidirectional Salesforce CRM & Transport Cloud REST v60.0 sync (Accounts, Loads, Opportunities, Live Telemetry Webhooks).\n5. Voice Command Dispatch & Gemini Multimodal In-Cab Co-Pilot.\n\nDev server binds to Port 3000 (`npm run dev` / `tsx server.ts`).",
+      "status": "cancelled",
+      "model": "gemini-3.8-flash-high",
+      "client_type": "gemini-bridge",
+      "parent_message_id": null,
+      "created_at": "2026-10-08T00:07:05.507Z",
+      "sender": "ios",
+      "is_cancelled": true
+    },
+    {
+      "id": "eb2155e3-be16-4362-b47f-2d52e4abde0a",
+      "role": "user",
+      "content": "# AGENT DIRECTIVE: TRUCKWITHEASE ENTERPRISE FLEET OS\nTarget Environment: Remote Linux Sandbox (Node.js 22 / TypeScript 5.8 / Vite SPA + Express Engine)\nAuthor: Jeremiah Morris (Founder & Chief Architect)\nCapabilities: code_execution, file_management, telematics_websocket, fmcsa_compliance_engine, salesforce_transport_cloud\n\n## ARCHITECTURAL CONTEXT\nYou are running the TRUCKWITHEASE Tactical Fleet Operating System. This is a mission-critical, zero-manual-reporting logistics cockpit designed to exceed Samsara, Motive (KeepTruckin), and Geotab. \n\nKey Operational Pillars:\n1. FMCSA 49 CFR Part 395/396 Certified Hours-of-Service (HOS) & Digital DVIR with cryptographic SHA-256 seal.\n2. Real-Time J1939 CAN-Bus Telemetry Streamer & Predictive Maintenance (SPN/FMI fault code forecasting with historical ledger MTBF matching).\n3. Low Bridge Detection Mesh with dynamic vehicle clearance profiles (13'6\" standard, 14'0\" oversize, etc.) and visual radar warnings.\n4. Bidirectional Salesforce CRM & Transport Cloud REST v60.0 sync (Accounts, Loads, Opportunities, Live Telemetry Webhooks).\n5. Voice Command Dispatch & Gemini Multimodal In-Cab Co-Pilot.\n\nDev server binds to",
+      "status": "pending",
+      "model": "gemini-3.8-flash-high",
+      "client_type": "gemini-bridge",
+      "parent_message_id": null,
+      "created_at": "2026-10-08T00:07:50.772Z",
+      "sender": "ios",
+      "is_cancelled": false
     }
   ]
 }

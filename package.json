@@ -1,0 +1,51 @@
+{
+  "name": "truckwithease-fleet-os",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "TRUCKWITHEASE Enterprise Fleet Operating System - Tactical Logistics Cockpit",
+  "main": "server.ts",
+  "scripts": {
+    "dev": "tsx server.ts",
+    "build": "vite build",
+    "start": "NODE_ENV=production tsx server.ts",
+    "test": "vitest run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeremiahjmorris1126-coder/first-project.git"
+  },
+  "keywords": [
+    "fmcsa",
+    "hos",
+    "dvir",
+    "j1939",
+    "can-bus",
+    "telematics",
+    "fleet-os",
+    "salesforce",
+    "gemini"
+  ],
+  "author": "Jeremiah Morris (Founder & Chief Architect)",
+  "license": "Proprietary",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "ws": "^8.22.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/ws": "^8.18.2",
+    "@vitejs/plugin-react": "^6.1.2",
+    "lucide-react": "^1.52.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.3",
+    "vitest": "^5.0.3"
+  }
+}
