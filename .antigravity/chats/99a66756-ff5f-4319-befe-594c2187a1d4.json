@@ -76,6 +76,30 @@
       "created_at": "2026-10-18T07:52:32.741Z",
       "sender": "ios",
       "is_cancelled": false
+    },
+    {
+      "id": "5ad219af-125c-4194-9f4a-39271f5a737f",
+      "role": "agent",
+      "content": "It is saved. The commit has been created with the commit message `Delete a chat twice without crashing` (`2565381`) and will be pushed automatically.",
+      "status": "completed",
+      "model": "gemini-3.8-flash-high",
+      "client_type": "gemini-bridge",
+      "parent_message_id": "e988f3ec-1c13-430e-8d80-a2fbb12357e9",
+      "created_at": "2026-10-18T07:52:52.514Z",
+      "sender": "macOS",
+      "is_cancelled": false
+    },
+    {
+      "id": "19416c48-9020-419f-9d5c-e7184fb1c46e",
+      "role": "user",
+      "content": "Commit all staged changes with exactly this commit message, unchanged:\n\nDelete a chat twice without crashing",
+      "status": "pending",
+      "model": "gemini-3.8-flash-high",
+      "client_type": "gemini-bridge",
+      "parent_message_id": null,
+      "created_at": "2026-10-18T07:53:29.837Z",
+      "sender": "ios",
+      "is_cancelled": false
     }
   ]
 }
