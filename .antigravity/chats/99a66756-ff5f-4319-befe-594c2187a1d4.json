@@ -220,6 +220,18 @@
       "created_at": "2026-10-18T07:56:28.818Z",
       "sender": "ios",
       "is_cancelled": false
+    },
+    {
+      "id": "077000db-f1b5-4b34-bfbf-fc8863aec088",
+      "role": "user",
+      "content": "Commit all staged changes with exactly this commit message, unchanged:\n\nDelete a chat twice without crashing",
+      "status": "pending",
+      "model": "gemini-3.8-flash-high",
+      "client_type": "gemini-bridge",
+      "parent_message_id": null,
+      "created_at": "2026-11-01T10:34:40.750Z",
+      "sender": "ios",
+      "is_cancelled": false
     }
   ]
 }
