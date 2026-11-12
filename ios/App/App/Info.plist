@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CAPACITOR_DEBUG</key>
+	<string>$(CAPACITOR_DEBUG)</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+  <string>TRUCKWITHEASE Fleet OS</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+
+	<!-- Apple App Store Review Compliance: Privacy & Usage Descriptions -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>TruckWithEase requires location access while in use to track vehicle navigation, calculate low-bridge clearance warnings, and verify FMCSA Hours-of-Service duty status.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>TruckWithEase uses background location to monitor active fleet routes, log FMCSA compliant driving logs, and alert drivers of imminent bridge hazards.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>TruckWithEase needs camera access to capture vehicle pre-trip and post-trip inspection photos for digital DVIR compliance (49 CFR § 396.11).</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>TruckWithEase needs photo library access to upload defect inspection photos and signed Bills of Lading.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>TruckWithEase requires microphone access for hands-free in-cab voice commands and Gemini copilot assistance while driving.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>TruckWithEase uses speech recognition to parse voice commands for hands-free dispatch and status updates.</string>
+
+	<!-- ITSAppUsesNonExemptEncryption: false prevents Export Compliance warning during App Store submission -->
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+    <false/>
+    <key>UISceneConfigurations</key>
+    <dict>
+      <key>UIWindowSceneSessionRoleApplication</key>
+      <array>
+        <dict>
+            <key>UISceneConfigurationName</key>
+            <string>Default Configuration</string>
+            <key>UISceneDelegateClassName</key>
+            <string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+            <key>UISceneStoryboardFile</key>
+            <string>Main</string>
+        </dict>
+      </array>
+    </dict>
+	</dict>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
+</dict>
+</plist>
