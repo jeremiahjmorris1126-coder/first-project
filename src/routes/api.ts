@@ -333,7 +333,7 @@ apiRouter.post('/salesforce/webhooks', (req: Request, res: Response) => {
  * POST /api/v1/copilot/command
  * Purpose: Parse hands-free driver speech transcripts using natural language reasoning to execute cockpit actions and dispatch responses.
  */
-apiRouter.post('/copilot/command', (req: Request, res: Response) => {
+apiRouter.post('/copilot/command', async (req: Request, res: Response) => {
   const request: CoPilotVoiceCommandRequest = req.body;
 
   if (!request.transcript || typeof request.transcript !== 'string') {
@@ -343,7 +343,7 @@ apiRouter.post('/copilot/command', (req: Request, res: Response) => {
     });
   }
 
-  const result = coPilotService.processVoiceCommand({
+  const result = await coPilotService.processVoiceCommand({
     driverId: request.driverId || 'DRV-7701',
     vehicleId: request.vehicleId || 'TRK-900',
     transcript: request.transcript,
@@ -357,7 +357,7 @@ apiRouter.post('/copilot/command', (req: Request, res: Response) => {
  * POST /api/v1/copilot/vision
  * Purpose: Analyze in-cab camera imagery, BOL documents, or tire wear photos using Gemini multimodal vision models with cryptographic ledger hashing.
  */
-apiRouter.post('/copilot/vision', (req: Request, res: Response) => {
+apiRouter.post('/copilot/vision', async (req: Request, res: Response) => {
   const request: CoPilotVisionRequest = req.body;
 
   if (!request.imageBase64 || !request.inspectionContext) {
@@ -367,6 +367,6 @@ apiRouter.post('/copilot/vision', (req: Request, res: Response) => {
     });
   }
 
-  const result = coPilotService.processMultimodalVision(request);
+  const result = await coPilotService.processMultimodalVision(request);
   return res.status(200).json({ success: true, data: result });
 });

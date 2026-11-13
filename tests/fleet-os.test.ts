@@ -152,8 +152,8 @@ describe('PILLAR 4: Salesforce Transport Cloud REST v60.0 Sync', () => {
 });
 
 describe('PILLAR 5: Gemini Multimodal In-Cab Co-Pilot', () => {
-  it('should parse voice transcript and dispatch HOS rest break intent', () => {
-    const res = coPilotService.processVoiceCommand({
+  it('should parse voice transcript and dispatch HOS rest break intent', async () => {
+    const res = await coPilotService.processVoiceCommand({
       driverId: 'DRV-7701',
       vehicleId: 'TRK-900',
       transcript: 'Take a 30 minute rest break right now',
@@ -165,8 +165,8 @@ describe('PILLAR 5: Gemini Multimodal In-Cab Co-Pilot', () => {
     expect(res.coPilotVoiceReply).toContain('rest break clock is now active');
   });
 
-  it('should parse low bridge inquiry voice command', () => {
-    const res = coPilotService.processVoiceCommand({
+  it('should parse low bridge inquiry voice command', async () => {
+    const res = await coPilotService.processVoiceCommand({
       driverId: 'DRV-7701',
       vehicleId: 'TRK-900',
       transcript: 'Are there any low bridges on this route?',
@@ -176,8 +176,8 @@ describe('PILLAR 5: Gemini Multimodal In-Cab Co-Pilot', () => {
     expect(res.dispatchedActionTaken).toBe(true);
   });
 
-  it('should process multimodal vision inspection with SHA-256 seal', () => {
-    const vision = coPilotService.processMultimodalVision({
+  it('should process multimodal vision inspection with SHA-256 seal', async () => {
+    const vision = await coPilotService.processMultimodalVision({
       vehicleId: 'TRK-900',
       driverId: 'DRV-7701',
       inspectionContext: 'BOL_SCAN',

@@ -4,6 +4,7 @@ import cors from 'cors';
 import { WebSocketServer, WebSocket } from 'ws';
 import { apiRouter } from './src/routes/api.js';
 import { telematicsService } from './src/services/telematics.js';
+import { appConfig } from './src/services/config.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -12,7 +13,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const server = http.createServer(app);
-const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+const PORT = appConfig.port;
 
 // Middleware
 app.use(cors());
@@ -29,6 +30,12 @@ app.get('/api/health', (_req: Request, res: Response) => {
     nodeVersion: process.version,
     port: PORT,
     timestamp: new Date().toISOString(),
+    config: {
+      geminiLive: appConfig.gemini.isLive,
+      geminiModel: appConfig.gemini.model,
+      salesforceLive: appConfig.salesforce.enabled,
+      telematicsSource: appConfig.telematics.source,
+    },
     capabilities: [
       'fmcsa_compliance_engine',
       'telematics_websocket_j1939',

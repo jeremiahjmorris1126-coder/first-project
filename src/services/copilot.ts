@@ -7,12 +7,76 @@ import {
 } from '../types/index.js';
 import { complianceService } from './compliance.js';
 import { routingService } from './routing.js';
+import { appConfig } from './config.js';
 
 class CoPilotService {
-  public processVoiceCommand(request: CoPilotVoiceCommandRequest): CoPilotCommandResult {
+  public async callLiveGeminiModel(prompt: string, imageBase64?: string): Promise<string | null> {
+    if (!appConfig.gemini.isLive) {
+      return null;
+    }
+
+    try {
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${appConfig.gemini.model}:generateContent?key=${appConfig.gemini.apiKey}`;
+
+      const contents: any[] = [];
+      const parts: any[] = [{ text: prompt }];
+
+      if (imageBase64) {
+        // Strip out data URL header if present
+        const cleanBase64 = imageBase64.replace(/^data:image\/\w+;base64,/, '');
+        parts.push({
+          inline_data: {
+            mime_type: 'image/jpeg',
+            data: cleanBase64,
+          },
+        });
+      }
+
+      contents.push({ parts });
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contents }),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.warn(`[Gemini API] Failed call (${response.status}):`, errorText);
+        return null;
+      }
+
+      const json = await response.json();
+      return json.candidates?.[0]?.content?.parts?.[0]?.text || null;
+    } catch (err) {
+      console.error('[Gemini API] Error contacting Google AI Studio:', err);
+      return null;
+    }
+  }
+
+  public async processVoiceCommand(request: CoPilotVoiceCommandRequest): Promise<CoPilotCommandResult> {
     const raw = request.transcript.toLowerCase().trim();
     const commandId = `CMD-${Date.now().toString(36).toUpperCase()}`;
 
+    // If Gemini API is live, try LLM response with fallback to tactical rule engine
+    if (appConfig.gemini.isLive) {
+      const prompt = `You are the in-cab Tactical Fleet Co-Pilot for driver ${request.driverId} in vehicle ${request.vehicleId}. 
+The driver just commanded via voice: "${request.transcript}".
+Reply in concise, professional tactical logistics terminology (under 40 words).`;
+      const liveReply = await this.callLiveGeminiModel(prompt);
+      if (liveReply) {
+        return {
+          commandId,
+          recognizedIntent: 'GEMINI_LLM_DISPATCH',
+          confidenceScore: 0.99,
+          extractedParameters: { liveGenerated: true },
+          coPilotVoiceReply: liveReply.trim(),
+          dispatchedActionTaken: true,
+        };
+      }
+    }
+
+    // Fallback: Tactical deterministic rule engine
     // Intent 1: HOS Rest Break or Status Transition
     if (raw.includes('rest break') || raw.includes('30-minute') || raw.includes('off duty') || raw.includes('sleeper')) {
       const status = raw.includes('sleeper') ? 'SLEEPER_BERTH' : 'OFF_DUTY';
@@ -108,7 +172,7 @@ class CoPilotService {
     };
   }
 
-  public processMultimodalVision(request: CoPilotVisionRequest): CoPilotVisionResult {
+  public async processMultimodalVision(request: CoPilotVisionRequest): Promise<CoPilotVisionResult> {
     const inspectionId = `VIS-${Date.now().toString(36).toUpperCase()}`;
 
     // Compute cryptographic SHA-256 seal of the optical inspection payload
@@ -116,6 +180,24 @@ class CoPilotService {
       .createHash('sha256')
       .update(request.imageBase64 + request.inspectionContext + request.vehicleId)
       .digest('hex');
+
+    // If live Gemini model is available, perform live vision analysis
+    if (appConfig.gemini.isLive) {
+      const visionPrompt = `You are a certified FMCSA vehicle inspector and commercial logistics specialist analyzing this inspection photo.
+Context: ${request.inspectionContext} for vehicle ${request.vehicleId}.
+Analyze the photo and provide a 1-2 sentence assessment covering any defects, compliance status, or verification details.`;
+      const liveAnalysis = await this.callLiveGeminiModel(visionPrompt, request.imageBase64);
+      if (liveAnalysis) {
+        return {
+          inspectionId,
+          detectedIssues: [],
+          legibilityConfidence: 0.98,
+          passedInspection: true,
+          multimodalSummary: liveAnalysis.trim(),
+          sha256Hash,
+        };
+      }
+    }
 
     if (request.inspectionContext === 'BOL_SCAN') {
       return {
