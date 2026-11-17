@@ -260,7 +260,7 @@ export default function App() {
             }}
           >
             <ShieldCheck size={14} />
-            <span>FMCSA 49 CFR Part 395/396 Certified</span>
+            <span>HOS &amp; DVIR tracking</span>
           </div>
 
           <div

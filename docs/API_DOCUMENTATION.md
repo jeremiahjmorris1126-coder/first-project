@@ -1,7 +1,7 @@
 # TRUCKWITHEASE ENTERPRISE FLEET OS — API DOCUMENTATION
 **System**: TRUCKWITHEASE Tactical Fleet Operating System  
 **Architect**: Jeremiah Morris (Founder & Chief Architect)  
-**Standard**: FMCSA 49 CFR Part 395/396 Certified | SAE J1939 CAN-Bus | Salesforce Transport Cloud REST v60.0 | Gemini Multimodal  
+**Standard**: SAE J1939 CAN-Bus | Salesforce Transport Cloud REST v60.0 | Gemini Multimodal  
 **Base URL**: `http://localhost:3000/api/v1`  
 **WebSocket Stream**: `ws://localhost:3000/ws/telematics`
 
@@ -36,7 +36,7 @@
 ### 1. `GET` `/compliance/hos/clocks/:driverId`
 
 #### 1. Purpose
-Retrieves real-time FMCSA 49 CFR Part 395 certified Hours-of-Service compliance clocks, duty limits, and violation status for an authenticated driver.
+Retrieves Hours-of-Service clocks (calculated from FMCSA 49 CFR Part 395 limits), duty limits, and violation status for an authenticated driver.
 
 #### 2. Parameters & Request Body
 * **Path Parameters**:
@@ -335,7 +335,7 @@ curl -X GET "http://localhost:3000/api/v1/compliance/dvir/DVIR-9042/verify"
     "tamperFree": true,
     "storedSeal": "c7d99957b59a7993fa80c2cbfb018e7aa4b6747fd0e6fd4954246d66cdd293b8",
     "calculatedSeal": "c7d99957b59a7993fa80c2cbfb018e7aa4b6747fd0e6fd4954246d66cdd293b8",
-    "complianceStandard": "FMCSA 49 CFR Part 396.11 Electronic Seal Certified"
+    "complianceStandard": "DVIR fields based on FMCSA 49 CFR 396.11 (not certified)"
   }
 }
 ```

@@ -153,7 +153,7 @@ apiRouter.get('/compliance/dvir/:reportId/verify', (req: Request, res: Response)
       tamperFree: verification.verified,
       storedSeal: verification.storedSeal,
       calculatedSeal: verification.calculatedSeal,
-      complianceStandard: 'FMCSA 49 CFR Part 396.11 Electronic Seal Certified',
+      complianceStandard: 'DVIR fields based on FMCSA 49 CFR 396.11 (not certified)',
     },
   });
 });

@@ -7,7 +7,7 @@
 
 ## ⚡ Operational Pillars
 
-1. **FMCSA 49 CFR Part 395/396 Certified Hours-of-Service (HOS) & Digital DVIR**:
+1. **Hours-of-Service (HOS) tracking & Digital DVIR** (based on FMCSA Part 395/396 limits; not an FMCSA-registered ELD):
    - 11-hour driving / 14-hour duty / 70-hour 8-day cycle clocks with real-time status transitions.
    - Digital Driver Vehicle Inspection Report (DVIR) with canonical **cryptographic SHA-256 seal** tamper-evident verification.
 2. **Real-Time J1939 CAN-Bus Telemetry Streamer & Predictive Maintenance**:
